@@ -66,13 +66,11 @@ def interpolate_maximum(tau, signal_strength, signal_fft, max_step = 0.5, d = 1)
             update = grad / dgrad
             if abs(update)>max_step:
                 d = signal_length/(update*f)
-                print('Resize: ', d)
             elif d < 1:
                 d = min(d * 1.2, 1.)
 
             t = t - d*update
             err = abs(update)
-            print(t)
         else:
             break
     return t
